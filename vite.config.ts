@@ -5,7 +5,7 @@ import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  base: "/desmache-do-bakana/",
+  base: "/desmonte-do-bakana/",
   plugins: [
     tanstackStart({
       server: { entry: "server" },
