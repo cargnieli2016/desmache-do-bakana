@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import logo from "@/assets/logo.webp.asset.json";
-import hero from "@/assets/hero.png.asset.json";
+import hero from "@/assets/hero-yard.png.asset.json";
 import selo from "@/assets/selo.png.asset.json";
 import c1 from "@/assets/06.webp.asset.json";
 import c2 from "@/assets/007.webp.asset.json";
@@ -82,8 +82,9 @@ function Index() {
             </div>
           </div>
           <div className="relative">
-            <img src={hero.url} alt="Pátio do desmanche" className="aspect-[4/5] w-full rounded-3xl object-cover md:rotate-2" />
+            <img src={hero.url} alt="Pátio do Desmanche do Bakana com veículos aguardando desmonte" className="aspect-[4/3] w-full rounded-3xl object-cover ring-1 ring-white/10 md:rotate-1" />
             <img src={selo.url} alt="Desmanche credenciado ao Detran" className="absolute -bottom-6 -left-6 h-32 drop-shadow-xl" />
+            <p className="absolute -top-3 left-6 rounded-full bg-brand px-4 py-1 text-xs font-semibold uppercase tracking-widest text-panel-foreground shadow-lg">Nosso pátio hoje</p>
           </div>
         </div>
       </section>
