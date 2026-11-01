@@ -11,7 +11,7 @@ import c6 from "@/assets/009.webp.asset.json";
 import c7 from "@/assets/010.webp.asset.json";
 import c8 from "@/assets/011.webp.asset.json";
 import c9 from "@/assets/012.webp.asset.json";
-import { MapPin, Phone, MessageCircle, ShieldCheck, FileText, Truck, ChevronDown } from "lucide-react";
+import { MapPin, Phone, MessageCircle, ShieldCheck, FileText, Truck, ArrowRight, Wrench } from "lucide-react";
 
 const PHONE_DISPLAY = "(19) 99110-5636";
 const WHATS = "https://wa.me/5519991105636?text=" + encodeURIComponent("Olá! Vim pelo site e gostaria de uma peça.");
@@ -24,10 +24,10 @@ const cars = [c1, c2, c3, c4, c5, c6, c7, c8, c9].map((c, i) => ({ img: c.url, n
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Desmanche do Bakana — Peças usadas com garantia" },
-      { name: "description", content: "Auto peças usadas com garantia e procedência. Sucatas para desmonte e envio imediato. Fale no WhatsApp." },
-      { property: "og:title", content: "Desmanche do Bakana — Peças usadas com garantia" },
-      { property: "og:description", content: "Sucatas para desmonte, peças originais com procedência e envio imediato." },
+      { title: "Bakana Auto Peças Usadas — Desmanche" },
+      { name: "description", content: "Desmanche do Bakana: peças usadas originais, com nota fiscal e procedência. Peça pelo WhatsApp." },
+      { property: "og:title", content: "Bakana Auto Peças Usadas — Desmanche" },
+      { property: "og:description", content: "Peças usadas originais com nota fiscal e procedência. Peça pelo WhatsApp." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -35,11 +35,11 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-function WhatsButton({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function Whats({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <a href={WHATS} target="_blank" rel="noreferrer"
-      className={`inline-flex items-center justify-center gap-2 rounded-sm bg-whats px-6 py-2.5 text-sm font-bold text-whats-foreground transition hover:brightness-110 ${className}`}>
-      {children} <MessageCircle className="h-4 w-4" />
+      className={`inline-flex items-center justify-center gap-2 rounded-full bg-whats px-6 py-3 font-semibold text-whats-foreground transition hover:brightness-110 ${className}`}>
+      <MessageCircle className="h-5 w-5" /> {children}
     </a>
   );
 }
@@ -47,116 +47,113 @@ function WhatsButton({ children, className = "" }: { children: React.ReactNode; 
 function Index() {
   return (
     <div className="min-h-screen bg-background font-sans text-foreground">
-      <div className="bg-card text-xs text-muted-foreground">
-        <div className="mx-auto flex max-w-5xl flex-wrap gap-6 px-6 py-2">
-          <a href={MAP_URL} target="_blank" rel="noreferrer" className="flex items-center gap-1"><MapPin className="h-3 w-3 text-brand" /> Desmanche do Bakana — ver no mapa</a>
-          <a href={WHATS} target="_blank" rel="noreferrer" className="flex items-center gap-1"><Phone className="h-3 w-3 text-brand" /> {PHONE_DISPLAY}</a>
-        </div>
-      </div>
-
-      <header className="relative bg-panel">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
-          <img src={logo.url} alt="Bakana Auto Peças Usadas" className="h-20 rounded-sm object-cover" />
-          <img src={selo.url} alt="Desmanche credenciado ao Detran" className="absolute left-1/2 top-0 h-32 -translate-x-1/2 md:h-40 z-10" />
+      <header className="sticky top-0 z-20 bg-panel/95 text-panel-foreground backdrop-blur">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
+          <div className="flex items-center gap-3">
+            <img src={logo.url} alt="Bakana Auto Peças Usadas" className="h-12 w-16 rounded-lg object-cover" />
+            <span className="font-display text-2xl tracking-wide">BAKANA <span className="text-brand">AUTO PEÇAS</span></span>
+          </div>
+          <nav className="hidden gap-8 text-sm font-medium md:flex">
+            <a href="#estoque" className="hover:text-brand">Estoque</a>
+            <a href="#vantagens" className="hover:text-brand">Vantagens</a>
+            <a href="#local" className="hover:text-brand">Localização</a>
+          </nav>
+          <a href={WHATS} target="_blank" rel="noreferrer" className="hidden items-center gap-2 text-sm font-semibold sm:flex"><Phone className="h-4 w-4 text-brand" />{PHONE_DISPLAY}</a>
         </div>
       </header>
 
-      <section className="relative overflow-hidden">
-        <img src={hero.url} alt="" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-panel/75" />
-        <div className="relative mx-auto max-w-5xl px-6 pb-14 pt-24 text-panel-foreground">
-          <div className="mb-4 flex gap-2 text-[11px] font-medium">
-            <span className="rounded-full border border-panel-foreground/70 px-3 py-0.5">ESTOQUE ATUALIZADO</span>
-            <span className="rounded-full border border-panel-foreground/70 px-3 py-0.5">SÃO PAULO / SP</span>
+      <section className="bg-panel text-panel-foreground">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-16 md:grid-cols-2 md:py-24">
+          <div>
+            <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-brand"><Wrench className="h-4 w-4" /> Desmanche credenciado</p>
+            <h1 className="mt-4 font-display text-6xl leading-[0.95] md:text-7xl">
+              A peça certa,<br />original e com <span className="text-brand">nota fiscal.</span>
+            </h1>
+            <p className="mt-6 max-w-md text-lg opacity-80">
+              Carros chegando toda semana para desmonte. Diga o modelo e a peça que você precisa: a gente separa e envia.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <Whats>Pedir minha peça</Whats>
+              <a href="#estoque" className="inline-flex items-center gap-2 font-semibold hover:text-brand">Ver estoque <ArrowRight className="h-4 w-4" /></a>
+            </div>
+            <div className="mt-10 flex gap-10">
+              <div><p className="font-display text-4xl text-brand">+80</p><p className="text-sm opacity-70">veículos no pátio</p></div>
+              <div><p className="font-display text-4xl text-brand">100%</p><p className="text-sm opacity-70">com procedência</p></div>
+            </div>
           </div>
-          <h1 className="max-w-2xl text-3xl font-bold leading-tight md:text-4xl">
-            Peças usadas com Garantia e Procedência! <span className="text-brand underline">ENVIO IMEDIATO DA SUA PEÇA!</span>
-          </h1>
-          <p className="mt-4 text-sm font-bold">SUCATAS EXCLUSIVAS PARA DESMONTE.</p>
-          <p className="text-sm opacity-90">Peças originais certificadas com procedência garantida e envio imediato.</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <WhatsButton>Chamar Vendedor!</WhatsButton>
-            <a href="#sucatas" className="inline-flex items-center gap-2 rounded-sm border border-panel-foreground px-6 py-2.5 text-sm font-bold">Sucatas Disponíveis <ChevronDown className="h-4 w-4" /></a>
+          <div className="relative">
+            <img src={hero.url} alt="Pátio do desmanche" className="aspect-[4/5] w-full rounded-3xl object-cover md:rotate-2" />
+            <img src={selo.url} alt="Desmanche credenciado ao Detran" className="absolute -bottom-6 -left-6 h-32 drop-shadow-xl" />
           </div>
         </div>
       </section>
 
-      <div className="overflow-hidden bg-brand py-1.5 text-sm tracking-[0.2em] text-panel-foreground">
-        <div className="flex w-max animate-marquee gap-10 whitespace-nowrap">
-          {Array.from({ length: 24 }).map((_, i) => <span key={i}>ENVIO IMEDIATO!</span>)}
+      <section id="estoque" className="mx-auto max-w-6xl px-6 py-20">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <h2 className="font-display text-5xl">Chegaram no pátio</h2>
+          <p className="max-w-sm text-muted-foreground">Toque em um veículo para perguntar pelas peças dele no WhatsApp.</p>
         </div>
-      </div>
-
-      <section id="sucatas" className="mx-auto max-w-5xl px-6 py-16">
-        <div className="mb-12 flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <h2 className="text-3xl font-bold">Últimas sucatas recebidas</h2>
-            <div className="mt-3 h-0.5 w-40 bg-brand" />
-          </div>
-          <span className="rounded-full bg-brand px-4 py-1 text-sm text-panel-foreground"><b>+80</b> SUCATAS DISPONÍVEIS</span>
-        </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3">
           {cars.map((c) => (
-            <article key={c.n} className="bg-panel text-panel-foreground">
-              <img src={c.img} alt={`Sucata para desmonte ${c.n}`} className="aspect-[4/3] w-full object-cover" loading="lazy" />
-              <div className="p-6">
-                <span className="rounded-full border border-panel-foreground/50 px-3 py-0.5 text-[10px]">Recém-chegado</span>
-                <h3 className="mt-3 text-xl font-bold">Sucata #{String(c.n).padStart(2, "0")}</h3>
-                <p className="text-xs opacity-80">Consulte modelo e ano com o vendedor</p>
-                <p className="mt-3 text-xs leading-relaxed opacity-90">Peças disponíveis para retirada;<br />Procedência garantida;<br />Envio imediato.</p>
-                <WhatsButton className="mt-5 w-full text-xs tracking-wider">FALAR COM VENDEDOR!</WhatsButton>
+            <a key={c.n} href={WHATS} target="_blank" rel="noreferrer"
+              className="group relative overflow-hidden rounded-2xl bg-panel">
+              <img src={c.img} alt={`Veículo para desmonte ${c.n}`} loading="lazy"
+                className="aspect-square w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-panel to-transparent p-4 pt-12 text-panel-foreground">
+                <span className="font-display text-2xl">Veículo {String(c.n).padStart(2, "0")}</span>
+                <span className="rounded-full bg-brand px-3 py-1 text-xs font-semibold">Consultar peças</span>
               </div>
-            </article>
+            </a>
           ))}
         </div>
       </section>
 
-      <section className="bg-brand py-14 text-center text-panel-foreground">
-        <h2 className="text-2xl font-bold underline">NÃO ENCONTROU A SUCATA PARA O SEU CARRO?</h2>
-        <p className="mt-3 text-sm font-bold">+80 SUCATAS DISPONÍVEIS PARA RETIRADA DE PEÇAS!</p>
-        <p className="text-sm opacity-90">Peças originais certificadas com procedência garantida e envio imediato.</p>
-        <WhatsButton className="mt-6">Vendedor Online!</WhatsButton>
-      </section>
-
-      <section className="bg-card py-16">
-        <div className="mx-auto max-w-5xl px-6">
-          <h2 className="max-w-md text-3xl font-bold">Oferecendo as melhores peças usadas!</h2>
-          <div className="mt-12 grid gap-10 text-center md:grid-cols-3">
-            {[
-              [ShieldCheck, "Garantia de Procedência", "Todos os nossos veículos são adquiridos legalmente, com documentação completa."],
-              [FileText, "Nota Fiscal Inclusa", "Vendas 100% legalizadas. Você recebe a nota fiscal eletrônica com as especificações da peça."],
-              [Truck, "Entrega em Todo o Brasil", "Logística otimizada para envio rápido e seguro de peças de qualquer tamanho."],
-            ].map(([Icon, t, d]) => {
-              const I = Icon as typeof Truck;
-              return (
-                <div key={t as string}>
-                  <I className="mx-auto h-6 w-6 text-brand" />
-                  <h3 className="mt-3 font-bold">{t as string}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{d as string}</p>
-                </div>
-              );
-            })}
-          </div>
+      <section id="vantagens" className="bg-brand text-panel-foreground">
+        <div className="mx-auto grid max-w-6xl gap-8 px-6 py-16 md:grid-cols-3">
+          {[
+            [ShieldCheck, "Procedência garantida", "Veículos adquiridos legalmente, com documentação."],
+            [FileText, "Nota fiscal sempre", "Toda venda sai com nota fiscal eletrônica."],
+            [Truck, "Enviamos para o Brasil", "Embalagem segura para peças de qualquer tamanho."],
+          ].map(([Icon, t, d]) => {
+            const I = Icon as typeof Truck;
+            return (
+              <div key={t as string} className="flex gap-4">
+                <I className="h-8 w-8 shrink-0" />
+                <div><h3 className="font-display text-2xl">{t as string}</h3><p className="opacity-90">{d as string}</p></div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 py-16">
-        <h2 className="text-3xl font-bold">Onde estamos</h2>
-        <div className="mt-3 h-0.5 w-40 bg-brand" />
-        <iframe title="Mapa Desmanche do Bakana" src={EMBED} className="mt-8 h-96 w-full border-0" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
-        <a href={MAP_URL} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand underline"><MapPin className="h-4 w-4" /> Abrir no Google Maps</a>
+      <section id="local" className="mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-5">
+        <div className="md:col-span-2">
+          <h2 className="font-display text-5xl">Venha nos visitar</h2>
+          <p className="mt-4 text-muted-foreground">Prefere ver a peça de perto? Estamos de portas abertas.</p>
+          <ul className="mt-6 space-y-3">
+            <li className="flex items-center gap-3"><MapPin className="h-5 w-5 text-brand" /> Desmanche do Bakana</li>
+            <li className="flex items-center gap-3"><Phone className="h-5 w-5 text-brand" /> {PHONE_DISPLAY}</li>
+          </ul>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Whats>Chamar no WhatsApp</Whats>
+            <a href={MAP_URL} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-foreground px-6 py-3 font-semibold">Como chegar</a>
+          </div>
+        </div>
+        <iframe title="Mapa Desmanche do Bakana" src={EMBED} loading="lazy" referrerPolicy="no-referrer-when-downgrade"
+          className="h-96 w-full rounded-3xl border-0 md:col-span-3" />
       </section>
 
-      <footer className="bg-panel py-10 text-panel-foreground">
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-6 px-6 text-sm">
-          <img src={logo.url} alt="Bakana Auto Peças Usadas" className="h-20 rounded-sm" />
-          <div className="space-y-1 opacity-80">
-            <p className="flex items-center gap-2"><MapPin className="h-4 w-4 text-brand" /> Desmanche do Bakana</p>
-            <p className="flex items-center gap-2"><Phone className="h-4 w-4 text-brand" /> {PHONE_DISPLAY}</p>
-          </div>
-          <WhatsButton>Fale no WhatsApp</WhatsButton>
+      <footer className="bg-panel py-8 text-sm text-panel-foreground">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 opacity-80">
+          <span className="font-display text-xl tracking-wide">BAKANA <span className="text-brand">AUTO PEÇAS USADAS</span></span>
+          <span>© {new Date().getFullYear()} Desmanche do Bakana</span>
         </div>
       </footer>
+
+      <a href={WHATS} target="_blank" rel="noreferrer" aria-label="WhatsApp"
+        className="fixed bottom-5 right-5 z-30 grid h-14 w-14 place-items-center rounded-full bg-whats text-whats-foreground shadow-lg">
+        <MessageCircle className="h-7 w-7" />
+      </a>
     </div>
   );
 }
