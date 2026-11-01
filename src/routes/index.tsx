@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import logo from "@/assets/logo.webp";
+import logo from "@/assets/logo-photoshop.png";
 import hero from "@/assets/011.webp";
 import c1 from "@/assets/002.webp";
 import c2 from "@/assets/003.webp";
@@ -20,9 +20,9 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-const PHONE_DISPLAY = "(19) 99110-5636";
+const PHONE_DISPLAY = "(19) 98228-8478";
 const WHATS =
-  "https://wa.me/5519991105636?text=" +
+  "https://wa.me/5519982288478?text=" +
   encodeURIComponent("Olá! Vim pelo site e gostaria de uma peça.");
 const MAP_URL =
   "https://www.google.com/maps/place/Desmanche+Do+Bakana/@-22.9205257,-47.2488667,17z/data=!3m1!4b1!4m6!3m5!1s0x94c8ba56b6d8fbd5:0xeeab4d8ab863d781!8m2!3d-22.9205257!4d-47.2488667!16s%2Fg%2F11qg2d78g_";
@@ -69,17 +69,23 @@ function Index() {
     <div className="min-h-screen bg-background font-sans text-foreground">
       <header className="relative z-20">
         <div className="bg-[#edf0ed] text-[#191919]">
-          <div className="mx-auto flex h-[76px] max-w-6xl items-center justify-between gap-4 px-6">
+          <div className="mx-auto flex h-24 max-w-6xl items-center justify-between gap-4 px-6 sm:h-28">
             <a
               href="#"
-              className="flex shrink-0 items-center gap-3"
+              className="group flex shrink-0 items-center gap-3 rounded-md transition-opacity hover:opacity-90"
               aria-label="Desmanche do Bakana — início"
             >
-              <img src={logo} alt="" className="h-14 w-[92px] rounded-md object-cover" />
-              <span className="hidden text-xs font-bold uppercase leading-tight tracking-[0.12em] sm:block">
-                Auto peças
+              <div className="flex h-20 w-20 items-center justify-center overflow-hidden sm:h-28 sm:w-28">
+                <img
+                  src={logo}
+                  alt="Logo do Desmanche do Bakana"
+                  className="h-full w-full object-contain drop-shadow-sm"
+                />
+              </div>
+              <span className="hidden text-[11px] font-black uppercase leading-[1.1] tracking-[0.18em] text-[#0f172a] sm:block">
+                Desmonte
                 <br />
-                usadas
+                do Bakana
               </span>
             </a>
             <div className="hidden items-center gap-2 sm:flex">
