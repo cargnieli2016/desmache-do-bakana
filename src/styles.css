@@ -52,6 +52,13 @@
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
   --color-sidebar: var(--sidebar);
+  --color-brand: var(--brand);
+  --color-whats: var(--whats);
+  --color-whats-foreground: var(--whats-foreground);
+  --color-panel: var(--panel);
+  --color-panel-foreground: var(--panel-foreground);
+  --font-display: "Epilogue", sans-serif;
+  --font-sans: "Epilogue", sans-serif;
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
@@ -62,9 +69,14 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 0.25rem;
+  --background: oklch(0.93 0.006 160);
+  --foreground: oklch(0.32 0 0);
+  --brand: oklch(0.63 0.23 27);
+  --whats: oklch(0.87 0.29 142);
+  --whats-foreground: oklch(0.2 0 0);
+  --panel: oklch(0.33 0 0);
+  --panel-foreground: oklch(0.98 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
@@ -142,3 +154,6 @@
     color: var(--color-foreground);
   }
 }
+
+@keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+@utility animate-marquee { animation: marquee 25s linear infinite; }
