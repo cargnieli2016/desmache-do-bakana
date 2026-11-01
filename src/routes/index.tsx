@@ -24,7 +24,8 @@ const PHONE_DISPLAY = "(19) 99110-5636";
 const WHATS =
   "https://wa.me/5519991105636?text=" +
   encodeURIComponent("Olá! Vim pelo site e gostaria de uma peça.");
-const MAP_URL = "https://www.google.com/maps/dir/?api=1&destination=-22.9205257%2C-47.2488667";
+const MAP_URL =
+  "https://www.google.com/maps/place/Desmanche+Do+Bakana/@-22.9205257,-47.2488667,17z/data=!3m1!4b1!4m6!3m5!1s0x94c8ba56b6d8fbd5:0xeeab4d8ab863d781!8m2!3d-22.9205257!4d-47.2488667!16s%2Fg%2F11qg2d78g_";
 const EMBED = "https://maps.google.com/maps?ll=-22.9205257%2C-47.2488667&z=16&output=embed";
 
 const cars = [c1, c2, c3, c4, c5, c6, c7, c8, c9];
@@ -238,13 +239,26 @@ function Index() {
             </a>
           </div>
         </div>
-        <iframe
-          title="Mapa Desmanche do Bakana"
-          src={EMBED}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          className="h-96 w-full rounded-3xl border-0 md:col-span-3"
-        />
+        <div className="relative isolate h-96 overflow-hidden rounded-3xl md:col-span-3">
+          <iframe
+            title="Mapa Desmanche do Bakana"
+            src={EMBED}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="pointer-events-none h-full w-full border-0"
+          />
+          <a
+            href={MAP_URL}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Abrir a localização do Desmanche do Bakana no Google Maps"
+            className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 via-transparent to-transparent p-6 text-white"
+          >
+            <span className="rounded-full bg-white px-5 py-3 font-semibold text-foreground shadow-lg transition hover:bg-white/90">
+              Abrir no Google Maps
+            </span>
+          </a>
+        </div>
       </section>
 
       <footer className="bg-panel py-8 text-sm text-panel-foreground">
